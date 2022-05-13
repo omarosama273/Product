@@ -66,3 +66,25 @@ function resetForm() {
     }
 
 }
+
+function search (searchTxt){
+
+    var cartona = '';
+
+    for (var i = 0; i < products.length; i++) {
+        if(products[i].name.toUpperCase().includes(searchTxt.toUpperCase()))
+        cartona += `<tr>
+        <td>${products[i].name}</td>
+        <td>${products[i].price}</td>
+        <td>${products[i].category}</td>
+        <td>${products[i].desc}</td>
+        <td><button class='btn btn-outline-warning'>update</button></td>
+        <td><button onclick="delateProduct(${i})" class='btn btn-outline-danger'>delate</button></td>
+        </tr>`;
+    }
+
+    
+    document.getElementById('tableBody').innerHTML = cartona
+    
+
+}
