@@ -8,6 +8,7 @@ var productCategoryInput = document.getElementById('productCategory')
 var productDescInput = document.getElementById('productdDesc')
 var addBtn = document.getElementById('addBtn')
 var inputs = document.getElementsByClassName('form-control')
+var currentIndex=0;
 
 var products = [];
 if(  JSON.parse( localStorage.getItem('productList'))){
@@ -16,11 +17,18 @@ if(  JSON.parse( localStorage.getItem('productList'))){
 displayData()
 
 addBtn.onclick = function () {
-    addProduct();
+    if(addBtn.innerHTML=='Add Product'){
+         addProduct();
+    }
+   else{
+    updateProduct();
+   }
     displayData();
     resetForm()
    
 }
+
+
 
 
 function addProduct() {
@@ -45,7 +53,7 @@ function displayData() {
         <td>${products[i].price}</td>
         <td>${products[i].category}</td>
         <td>${products[i].desc}</td>
-        <td><button class='btn btn-outline-warning'>update</button></td>
+        <td><button onclick="getInfoProduct(${i})" class='btn btn-outline-warning'>update</button></td>
         <td><button onclick="delateProduct(${i})" class='btn btn-outline-danger'>delate</button></td>
         </tr>`;
     }
@@ -54,6 +62,33 @@ function displayData() {
     document.getElementById('tableBody').innerHTML = cartona
     
 }
+
+function getInfoProduct(index){
+    currentIndex=index;
+
+var currentProduct=products[index];
+productNameInput.value=currentProduct.name;
+productPriceInput.value=currentProduct.price;
+productCategoryInput.value=currentProduct.category;
+productDescInput.value=currentProduct.desc;
+addBtn.innerHTML="uptade product"
+}
+
+function updateProduct(){
+    alert(currentIndex)
+    var product =
+    {
+        name: productNameInput.value,
+        price: productPriceInput.value,
+        category: productCategoryInput.value,
+        desc: productDescInput.value
+    }
+    products[currentIndex]=product;
+
+ localStorage.setItem('productList',JSON.stringify(products));
+
+}
+
 function delateProduct(index){
    products.splice(index,1);
    localStorage.setItem('productList',JSON.stringify(products))
@@ -78,7 +113,7 @@ function search (searchTxt){
         <td>${products[i].price}</td>
         <td>${products[i].category}</td>
         <td>${products[i].desc}</td>
-        <td><button class='btn btn-outline-warning'>update</button></td>
+        <td><button onclick="getInfoProduct(${i})" class='btn btn-outline-warning'>update</button></td>
         <td><button onclick="delateProduct(${i})" class='btn btn-outline-danger'>delate</button></td>
         </tr>`;
     }
