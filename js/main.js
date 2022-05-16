@@ -105,7 +105,7 @@ function resetForm() {
     productCategoryInput.classList.remove('is-valid');
     productNameInput.classList.remove('is-valid');
     productPriceInput.classList.remove('is-valid');
-    
+
     addBtn.disabled = 'true';
 }
 
@@ -170,7 +170,7 @@ if(nameRejex()&&priceRejex()&&categoryRejex()){
     }
 }
 function priceRejex () {
-    var priceRejex = /^[0-9][0-5]$/;
+    var priceRejex = /^[1-9]{1,4}$/;
     if (priceRejex.test(productPriceInput.value)) {
         productPriceInput.classList.add('is-valid');
         productPriceInput.classList.remove('is-invalid');
