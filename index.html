@@ -9,16 +9,19 @@
 
 <body>
 
-<div class="w-75 bg-info m-auto p-5">
-  <label for="productName">Product Name :</label>
-  <input type="text" class="form-control" id="productName">
-  <label for="productPrice">Product Price :</label>
+<div class="w-75  m-auto p-5">
+  <label for="productName">Product Name  <span class="text-danger"> *</span></label>
+  <input type="text" class="form-control " id="productName">
+  <div id="nameAlart" class="alert alert-danger p-2 mt-2 d-none">product name sould be have more than 2 and less than 8 characters and start [A-Z] </div>
+  <label for="productPrice">Product Price <span class="text-danger"> *</span></label>
   <input type="number" class="form-control" id="productPrice">
-  <label for="productCategory">Product Category :</label>
+  <div id="priceAlart" class="alert alert-danger p-2 mt-2 d-none">product name sould be hav </div>
+  <label for="productCategory">Product Category <span class="text-danger"> *</span></label>
   <input type="text" class="form-control" id="productCategory">
-  <label for="productDesc">Product Description :</label>
+  <div id="categoryAlart" class="alert alert-danger p-2 mt-2 d-none">product category sould be have more than 2 and less than 8 characters and start [A-Z]  </div>
+  <label for="productDesc">Product Description </label>
 <textarea class="form-control" id="productdDesc"></textarea>
-<button id="addBtn" class="btn btn-primary mt-3 float-end">Add Product</button>
+<button id="addBtn" disabled class="btn btn-primary mt-3 float-end ">Add Product</button>
 <div class="clearfix"></div>
 
 <input onkeyup="search(this.value)" type="text" class="form-control my-4" placeholder="search by name ..." >
