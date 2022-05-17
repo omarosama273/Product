@@ -87,8 +87,13 @@ function updateProduct() {
         desc: productDescInput.value
     }
     products[currentIndex] = product;
-
+    addBtn.innerHTML = "Add Product"
     localStorage.setItem('productList', JSON.stringify(products));
+
+}
+
+function resetApdate(){
+
 
 }
 
